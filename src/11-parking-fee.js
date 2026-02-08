@@ -34,4 +34,56 @@
  */
 export function calculateParkingFee(hours, vehicleType) {
   // Your code here
+  if ( hours <= 0 ) {
+    return -1;
+  }
+  if ( vehicleType != "car" && vehicleType != "motorcycle" && vehicleType != "bus" ){
+    return -1;
+  }
+  var totalRoundedHours = Math.ceil(hours);
+
+  if ( vehicleType === "car" ) {
+    var totalParkingFees = 0;
+    if ( totalRoundedHours > 1 ) {
+      totalParkingFees += 5 + (totalRoundedHours - 1) * 3;
+    } else {
+      return 5;
+    }
+    
+    if ( totalParkingFees > 30 ) {
+      return 30;
+    } else {
+      return totalParkingFees;
+    }
+    
+  } else if ( vehicleType === "motorcycle" ) {
+    var totalParkingFees = 0;
+    if ( totalRoundedHours > 1 ) {
+      totalParkingFees += 3 + (totalRoundedHours - 1) * 2;
+    } else {
+      return 3;
+    }
+    
+    if ( totalParkingFees > 18 ) {
+      return 18;
+    } else {
+      return totalParkingFees;
+    }
+    
+  } else if ( vehicleType === "bus" ) {
+    var totalParkingFees = 0;
+    if ( totalRoundedHours > 1 ) {
+      totalParkingFees += 10 + (totalRoundedHours - 1) * 7;
+    } else {
+      return 10;
+    }
+    
+    if ( totalParkingFees > 60 ) {
+      return 60;
+    } else {
+      return totalParkingFees;
+    }
+
+  }
+
 }
